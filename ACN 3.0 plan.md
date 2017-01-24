@@ -58,6 +58,7 @@ Tasks
 
 | Task Name | Priority | Spend Time |
 |--------|--------|--------|
+| 工作流程整理优化 | 1 | 2 day |
 | 重新整理自动化逻辑 | 1 | 2 day |
 | 添加Nodejs前端模板支持 | 1 | 2 day |
 | 添加自动化测试 | 1 | 2 day |
