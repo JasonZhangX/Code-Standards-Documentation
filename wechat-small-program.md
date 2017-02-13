@@ -81,7 +81,7 @@ Last update:　201702131335
 
 #####小程序与其他类型应用对比
 |应用类型|开发成本|维护更新|用户体验|安装方式|跨平台|功能|综合评分|
-|--------|--------|---------|---------|---------|---------|---------|
+|--------|--------|---------|---------|---------|---------|---------|---------|
 |[Native App](https://en.wikipedia.org/w/index.php?title=Native_app&redirect=no)(原生应用)|高|复杂|优|App Store|差|优|C|
 |[Web App](https://en.wikipedia.org/wiki/Web_application#Definition_and_similar_terms)(HTML5应用)|低|简单|中|无需安装|优|中|A|
 |[Hybird App](http://developer.telerik.com/featured/what-is-a-hybrid-mobile-app/)(混合应用)|中|简单|良|App Store(Web无需安装)|优|中|B+|
