@@ -4,7 +4,8 @@ Last update:　201702131335
 
 ##索引
 - #### [什么是微信小程序？](#whatIsWeChatLiteApp)
-- #### [小程序的优势和不足？](#advantagesAndDisadvantages)
+- #### [小程序入口](#entrance)
+- #### [小程序的特点,优势和不足](#advantagesAndDisadvantages)
 - #### [小程序能为我们带来什么？](#value)
 - #### [ACN哪些功能适合使用小程序开发？](#whatCanWeDo)
 - #### [注册流程](#registration)
@@ -23,24 +24,32 @@ Last update:　201702131335
 
 - 张小龙
 小程序是一种不需要下载安装即可使用的应用，它实现了应用**触手可及**的梦想，用户扫一扫或者搜一下即可打开应用。也体现了**用完即走**的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
+	<img src="https://i.imgur.com/qb7AIRO.png">
 	- 触手可及：通过手机获得周边信息，以二维码作为入口启动应用程序。
 	- 用完即走：访问完服务，无需卸载程序。
 
 - 通俗理解
-
+运行在微信内的小应用。
 <blockquote>PC互联网的入口在搜索，移动互联网的入口在二维码。</blockquote>
 
-##小程序入口
+##<a name="entrance"></a>小程序入口
 #####用户路径
-微信搜索->小程序
-线下扫码->小程序
-已安装用户->发现->小程序->历史记录
-好友推荐->小程序
-公众号关联->小程序
-小程序发送到桌面(Android)->桌面图标->小程序
+- 微信搜索->小程序
+<img src="https://i.imgur.com/SlNY24A.png">
+- 线下扫码->小程序
+- 已安装用户->发现->小程序->历史记录
+<img src="http://i.imgur.com/IBpT3vn.jpg" width="400px">
+
+- 好友推荐->小程序
+<img src="https://i.imgur.com/kwIIvQC.png">
+- 公众号关联->小程序
+<img src="https://i.imgur.com/ec27CT4.png">
+- 小程序发送到桌面(Android)->桌面图标->小程序
+<img src="http://mmbiz.qpic.cn/mmbiz_png/tnZGrhTk4deKORY0mbNLQ9cwHsX3ObjEUUbgkbVaLGw1GverGwfgGZW8mnvVfNHmh40oFJzsUI2wYYYbOspeeQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1" >
 
 ##小程序与订阅号和服务号的不同
 <img src="https://i.imgur.com/oJRuEKF.png">
+<img src="https://i.imgur.com/ovXHv8E.png">
 微信会严格界限小程序与现有公众号服务功能交集。
 
 ##<a name="advantagesAndDisadvantages"></a>小程序的特点,优势和不足
@@ -57,7 +66,7 @@ Last update:　201702131335
 - 整套完整的开发框架
 - 借助微信在移动端的跨平台能力实现了小程序的移动端跨平台
 
-#####小程序的不足(微信对小程序的产品特殊定位)
+#####小程序的不足
 - 无应用商店(没有APP Store中心进行引流)
 - 不做订阅(没有Fans订阅关系)
 - 不能主动推送消息(不打扰用户)
@@ -68,6 +77,7 @@ Last update:　201702131335
 - 可以调用的API有限
 - 需要微信官方审核才能发布
 
+**小结：微信对小程序的产品定位决定了其优势和不足**
 
 #####小程序与其他类型应用对比
 ||开发成本|维护更新|用户体验|安装方式|跨平台|功能|综合评分|
@@ -77,11 +87,18 @@ Last update:　201702131335
 |[Hybird App](http://developer.telerik.com/featured/what-is-a-hybrid-mobile-app/)(混合应用)|中|简单|良|App Store(Web无需安装)|优|中|B+|
 |[Wechat Lite App](https://mp.weixin.qq.com/cgi-bin/wx)(微信小程序)|低|简单|良|无需安装|良|差|B|
 
-
+#####开发平台
+<img src="https://i.imgur.com/HBRRckx.png">
 
 ##<a name="whatCanWeDo"></a>小程序能为我们带来什么
-与其看小程序能为我们带来什么，不如看看微信团队想做什么？
-#####微信的目标是做移动互联网的入口。小程序希望做线下弱连接的入口。
+#####流量？！
+发布初期会带来一部分流量红利，仅限于提前拿到内测账号借着小程序发布会推广的小程序。而且没有办法实现流量的转化，由于不能跳转到外部网页，仅有的流量会转化到小程序所属公众号一部分，但是由于层级过深，转化效果一般。
+
+#####用户？！
+小程序的产品定位用完即走，由于没有订阅功能无法主动给用户推送消息，所以基于粉丝的营销活动都无法在小程序上进行。
+
+#####与其看小程序能为我们带来什么，不如看看微信团队想做什么？
+**微信的目标是做移动互联网的入口。小程序希望做线下“弱连接”的入口。**
 
 <blockquote>
 张小龙在揭开小程序神秘面纱时举的例子，是两个线下连接场景：一是公交车站扫码得知到站时间；二是汽车站扫码买票。在连接人与人、人与服务、人与商业方面都已经有成熟的产品和服务，但连接人和物品还进展缓慢。没有被电子化的物品怎么连接？最实惠和便利的入口便是二维码，而小程序就是要做这个连接。
@@ -102,6 +119,11 @@ Last update:　201702131335
 <blockquote>
 目前，包括去哪儿、携程、摩拜单车等App都做了首批小程序，这些小程序功能都有所“缩水”，并不能完全替代App。
 </blockquote>
+**摩拜单车**
+APP
+<img src="https://i.imgur.com/5MRobQ6.png">
+小程序
+<img src="https://i.imgur.com/QEHQ29d.png">
 
 #####ACN适合使用小程序开发的功能
 - 价格计算器
@@ -164,7 +186,7 @@ Javascript 不是完整的ECMAScript 6
 
 - 大小限制
 	源码打包限制1m大小限制了小程序的应用场景。
--	小程序仍然使用WebView渲染，并非原生渲染
+-	小程序仍然使用WebView渲染，并全部为非原生渲染（）
 -	需要独立开发，不能在非微信环境运行。
 -	开发者不可以扩展新组件。
 -	服务端接口返回的头无法执行，比如：Set-Cookie。
@@ -209,3 +231,4 @@ Javascript 不是完整的ECMAScript 6
 -	[张小龙：小程序正式发布，开启移动应用新时代（发布会视频）](http://daxue.qq.com/content/content/id/3109)
 -	[Chrome Web Store](https://chrome.google.com/webstore/category/extensions?hl=en-US)
 -	[一起脱去小程序的外套 - 微信小程序架构解析](http://mp.weixin.qq.com/s/3QE3g0NmaBAi91lbrihhVw)
+-	[微信的订阅号和服务号如何区分？](https://www.zhihu.com/question/21289814)
