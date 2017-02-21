@@ -30,6 +30,7 @@ Last update:　201702131335
 
 - 通俗理解
 运行在微信内的小应用。
+<img src="https://i.imgur.com/esaIaa7.png">
 <blockquote>PC互联网的入口在搜索，移动互联网的入口在二维码。</blockquote>
 
 ##<a name="entrance"></a>小程序入口
@@ -37,6 +38,8 @@ Last update:　201702131335
 - 微信搜索->小程序
 <img src="https://i.imgur.com/SlNY24A.png">
 - 线下扫码->小程序
+<img src="https://media.ifanrusercontent.com/media/user_files/trochili/e6/5d/e65ddfc9a3b4c1a098021b5220f7b5d982cc6a2d-4118d8a8cdb2f0b45e713d0d252d871f987ac7dd.png" width="200px">
+
 - 已安装用户->发现->小程序->历史记录
 <img src="http://i.imgur.com/IBpT3vn.jpg" width="400px">
 
@@ -63,8 +66,10 @@ Last update:　201702131335
 - 直接调用微信的API
 - 相比HTML5应用操作更流畅，用户体验好
 - 自动更新
-- 整套完整的开发框架
+- 整套完整的开发框架,前端组件化开发。
 - 借助微信在移动端的跨平台能力实现了小程序的移动端跨平台
+- 使用Virtual DOM，进行局部更新。
+- 全部使用https，确保传输中安全。
 
 #####小程序的不足
 - 无应用商店(没有APP Store中心进行引流)
@@ -106,7 +111,7 @@ Last update:　201702131335
 
 
 ##<a name="advantagesAndDisadvantages"></a>ACN哪些功能适合使用小程序开发
-
+<img src="http://upload-images.jianshu.io/upload_images/1158202-c2b67d450c01bbb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 **小程序对一些使用频率低的工具类产品是一个很好的平台。**
 #####适合的应用场景
 -	工具类应用
@@ -119,6 +124,7 @@ Last update:　201702131335
 <blockquote>
 目前，包括去哪儿、携程、摩拜单车等App都做了首批小程序，这些小程序功能都有所“缩水”，并不能完全替代App。
 </blockquote>
+
 **摩拜单车**
 APP
 <img src="https://i.imgur.com/5MRobQ6.png">
@@ -136,16 +142,75 @@ APP
 ##<a name="develop"></a>开发小程序
 [小程序信息完善及开发前准备](https://mp.weixin.qq.com/debug/wxadoc/introduction/#小程序信息完善及开发前准备)
 
+#####小程序架构
+微信小程序的框架包含两部分View视图层、App Service逻辑层，View层用来渲染页面结构，AppService层用来逻辑处理、数据请求、接口调用，它们在两个线程里运行。
 
-#####小程序运行环境
+视图层使用WebView渲染，逻辑层使用JSCore运行。
+
+视图层和逻辑层通过系统层的JSBridage进行通信，逻辑层把数据变化通知到视图层，触发视图层页面更新，视图层把触发的事件通知到逻辑层进行业务处理。
+
+<img src="https://pic2.zhimg.com/v2-2b982ccd90101fab6b6c5994abfc66b1_b.png">
+
+小程序启动时会从CDN下载小程序的完整包
+
+<img src="https://pic1.zhimg.com/v2-d6deb274157ccffbc5cbc762503e9504_b.png">
+
+#####View (页面视图)
+######开发语言
+- WXML（WeiXin Markup Language）
+	- 支持数据绑定
+	- 支持逻辑算术、运算
+	- 支持模板、引用
+	- 支持添加事件（bindtap）
+	- WXML是XML不是HTML
+	<img src="https://pic4.zhimg.com/v2-e0a34d00890cab73c79d137edd1377a3_b.png">
+wxml编译器：wcc 把wxml文件 转为 js
+执行方式：wcc index.wxml
+
+- WXSS(WeiXin Style Sheets)
+
+	- 支持大部分CSS特性 WXSS不是完整的CSS
+	- 添加尺寸单位rpx，可根据屏幕宽度自适应
+	- 使用@import语句可以导入外联样式表
+	- 不支持多层选择器-避免被组件内结构破坏
+
+    wxss编译器：wcsc 把wxss文件转化为 js
+    执行方式： wcsc index.wxss
+	<img src="https://pic2.zhimg.com/v2-3829f8c15260cd0cbcbadfab3446ad65_b.png">
+
+#####App Service(逻辑层)
+逻辑层将数据进行处理后发送给视图层，同时接受视图层的事件反馈
+
+App( ) 小程序的入口；Page( ) 页面的入口
+提供丰富的 API，如微信用户数据，扫一扫，支付等微信特有能力。
+每个页面有独立的作用域，并提供模块化能力。
+数据绑定、事件分发、生命周期管理、路由管理
+
+######小程序运行环境
 -	在 iOS 上，小程序的 javascript 代码是运行在 JavaScriptCore 中，是由 WKWebView 来渲染的，环境有 iOS8、iOS9、iOS10
 -	在 Android 上，小程序的 javascript 代码是通过 X5 JSCore来解析，是由 X5 基于 Mobile Chrome 37 内核来渲染的
 -	在 开发工具上， 小程序的 javascript 代码是运行在[nwjs](https://github.com/nwjs) 中，是由 Chrome Webview 来渲染的
+- Javascript不是完整的ECMAScript 6
 
-#####开发语言
-WXML 不是 HTML
-WXSS 也不是完整的CSS
-Javascript 不是完整的ECMAScript 6
+######App Service-Binding
+数据绑定使用 Mustache 语法（双大括号）将变量包起来，动态数据均来自对应 Page 的 data，可以通过setData方法修改数据。
+
+事件绑定的写法同组件的属性，以 key、value 的形式，key 以bind或catch开头，然后跟上事件的类型，如bindtap, catchtouchstart，value 是一个字符串，需要在对应的 Page 中定义同名的函数。
+
+
+######App Service-Life Cylce
+<img src="https://pic4.zhimg.com/v2-816d2cafb16283170adf83c2c20cf06f_b.png">
+######App Service-API
+<img src="https://pic3.zhimg.com/v2-68687e5d9c1566ce7bd85c20e1642ede_b.png">
+######App Service-Router
+- navigateTo(OBJECT)
+	保留当前页面，跳转到应用内的某个页面，使用navigateBack可以返回到原页面。页面路径只能是五层
+
+- redirectTo(OBJECT)
+	关闭当前页面，跳转到应用内的某个页面。
+
+- navigateBack(OBJECT)
+	关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages()) 获取当前的页面栈，决定需要返回几层。
 
 #####Troubleshoot
 
@@ -186,7 +251,7 @@ Javascript 不是完整的ECMAScript 6
 
 - 大小限制
 	源码打包限制1m大小限制了小程序的应用场景。
--	小程序仍然使用WebView渲染，并全部为非原生渲染（）
+-	小程序仍然使用WebView渲染，并全部为非原生渲染（`<canvas/> <video/> <map/> <textarea/>`为Native组件）
 -	需要独立开发，不能在非微信环境运行。
 -	开发者不可以扩展新组件。
 -	服务端接口返回的头无法执行，比如：Set-Cookie。
